@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model SAMLIdentityProvider.Models.User
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SAML Identity Provider</title>
+</head>
+<body>
+    <h1>
+        SAML Identity Provider
+    </h1>
+    <h2> 
+        @ViewBag.Requester is requesting login
+    </h2>
+    <div style="color: red;">@ViewBag.ErrorMsg</div>
+    @using (Html.BeginForm("AuthenticateUser", "SAML", FormMethod.Post))
+    {
+        <fieldset style="float:left;">
+            <div>
+                @Html.LabelFor(m => m.Username, new { style = "display:inline-block; width:70px;" })
+                @Html.TextBoxFor(m => m.Username)
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(m => m.Password, new { style = "display:inline-block; width:70px;" })
+                @Html.TextBoxFor(m => m.Password, new { type = "password" })
+            </div>
+            @Html.Hidden("requester")
+            <br />
+            <input type="submit" />
+        </fieldset>
+   }
+</body>
+</html>

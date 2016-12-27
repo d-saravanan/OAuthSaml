@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SubmitResponse</title>
+</head>
+<body>
+    <h1>Please wait to be redirected back to the client</h1>
+    <img src="~/Content/loading_spinner.gif" />
+    <form id="saml-response-form"action="@ViewBag.ResponseURL" method="post" style="display:none;" >
+        <input name="samlResponse" type="text"value="@ViewBag.SAMLResponse" />
+        <input type="submit" value="Return" />
+    </form>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#saml-response-form').submit();
+        });
+    </script>
+</body>
+</html>

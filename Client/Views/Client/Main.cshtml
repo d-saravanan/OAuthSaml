@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+@section Scripts {
+    @Scripts.Render("~/bundles/app")
+}
+<head>
+    <title>Client</title>
+</head>
+<body>
+    <h1>Client Application</h1>
+
+    <form id="getresource" action="/Client/GetResource" method="GET" style="float:left;">
+        <fieldset style="min-height:120px;">
+            <text style="font-weight:bold;">Get Resource</text>
+            <br />
+            <br />
+            <input type="submit" value="Get Resource" />
+        </fieldset>
+    </form>
+    <fieldset style="float:left; min-height:120px;">
+        <text style="font-weight:bold;">API response</text>
+        <br />
+        <br />
+        @Html.Raw(ViewBag.ApiResponse != null ? ViewBag.ApiResponse.Replace("\"", "").Replace("\\n", "<br />") : "")
+    </fieldset>
+
+</body>
+</html>

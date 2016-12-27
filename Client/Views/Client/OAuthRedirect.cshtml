@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Send SAML</title>
+</head>
+<body>
+    <h1>Successful login!</h1>
+    <h2>Redirecting to the authorisation server</h2>
+    <img src="~/Content/Images/loading_spinner.gif" />
+    <form id="saml-form" action="@ViewBag.AuthServerUrl" method="post" style="display:none;" >
+        <input name="samlToken" type="text" value="@ViewBag.SAMLResponse" />
+        <input type="submit" value="Return" />
+    </form>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#saml-form').submit();
+        });
+    </script>
+</body>
+</html>
